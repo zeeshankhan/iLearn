@@ -75,8 +75,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.title = @"Login";
-    self.txtUserid.text = @"E20043650";
-    self.txtPassword.text = @"123456";
     if (self.navName) self.navName.hidden = YES;
     if (self.navThumb) self.navThumb.hidden = YES;
 }
