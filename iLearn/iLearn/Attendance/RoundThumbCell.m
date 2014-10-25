@@ -14,8 +14,8 @@
     // Initialization code
     
     self.imgThumb.layer.cornerRadius = self.imgThumb.frame.size.width / 2.0;
-    self.imgThumb.layer.borderWidth = 3.0;
-    self.imgThumb.layer.borderColor = [UIColor clearColor].CGColor;
+//    self.imgThumb.layer.borderWidth = 3.0;
+//    self.imgThumb.layer.borderColor = [UIColor clearColor].CGColor;
     self.imgThumb.clipsToBounds = YES;
 }
 

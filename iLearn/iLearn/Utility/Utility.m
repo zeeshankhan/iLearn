@@ -35,7 +35,7 @@
     
     // Save M
     filePath = [[self class] filePathFor:[NSString stringWithFormat:@"%@_M.png",name]];
-    UIImage *imgM = [thumb scaleImageProportionallyToSize:CGSizeMake(150, 160)];
+    UIImage *imgM = [thumb scaleImageProportionallyToSize:ThumbSizeM];
     imgData = UIImagePNGRepresentation(imgM);
     status = [imgData writeToFile:filePath atomically:NO];
     if (status == FALSE)
@@ -44,7 +44,7 @@
     
     // Save S
     filePath = [[self class] filePathFor:[NSString stringWithFormat:@"%@_S.png",name]];
-    UIImage *imgS = [imgM scaleImageProportionallyToSize:ThumbSize];
+    UIImage *imgS = [imgM scaleImageProportionallyToSize:ThumbSizeS];
     imgData = UIImagePNGRepresentation(imgS);
     status = [imgData writeToFile:filePath atomically:NO];
     if (status == FALSE)

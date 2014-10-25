@@ -30,7 +30,7 @@
 @property (strong, nonatomic) UIPopoverController *imgPopover;
 @property (weak, nonatomic) IBOutlet UISwitch *switchMember;
 @property (weak, nonatomic) IBOutlet UILabel *lblWarning;
-
+@property (strong, nonatomic) NSDictionary *dicThumb;
 @end
 
 @implementation LoginVC
@@ -67,8 +67,8 @@
     [[self.bRegister layer] setCornerRadius:radius];
 
     [[self.bPhoto layer] setBorderColor:color];
-    [[self.bPhoto layer] setBorderWidth:borderWidth];
-    [[self.bPhoto layer] setCornerRadius:radius];
+    [[self.bPhoto layer] setBorderWidth:2];
+    [[self.bPhoto layer] setCornerRadius:self.bPhoto.frame.size.width / 2];
     self.bPhoto.clipsToBounds = YES;
 }
 
@@ -158,6 +158,11 @@
     User *usr = [[User_DM sharedInstance] getUserWithId:strUserId];
     if (usr == nil) {
 
+        if (self.dicThumb) {
+            UIImage *image = [self.dicThumb objectForKey:@"UIImagePickerControllerOriginalImage"];
+            [Utility saveThumb:image withName:self.txtUserid.text];
+        }
+
         NSDictionary *dicUser = @{kUserId: strUserId
                                   , kUserPassword: [Utility validString:self.txtPassword.text]
                                   , kUserFirstName: [Utility validString:self.txtFirstName.text]
@@ -187,19 +192,7 @@
 
 
 - (IBAction)addPhotoAction {
-    
-    NSString *strUserId = self.txtUserid.text;
-    if ([strUserId isEqualToString:@""]) {
-        NSLog(@"Please enter user id first.");
-        return;
-    }
-    
-    User *usr = [[User_DM sharedInstance] getUserWithId:strUserId];
-    if (usr != nil) {
-        NSLog(@"User already exist, try different id.");
-        return;
-    }
-    
+
     [self dismissKeyboard];
 
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
@@ -246,12 +239,11 @@
     [[picker presentingViewController] dismissViewControllerAnimated:YES completion:NULL];
 #endif
     
+    self.dicThumb = info;
     UIImage *image = [info objectForKey:@"UIImagePickerControllerOriginalImage"];
-
-    [Utility saveThumb:image withName:self.txtUserid.text];
     
     if (image != nil) {
-        [self.bPhoto setImage:[Utility imageMFor:self.txtUserid.text] forState:UIControlStateNormal];
+        [self.bPhoto setImage:[image scaleImageProportionallyToSize:ThumbSizeL] forState:UIControlStateNormal];
         [self.bPhoto setTitle:@"" forState:UIControlStateNormal];
     }
     else {
@@ -262,7 +254,7 @@
 - (void)showLoginDetails {
     
     if (self.navThumb == nil) {
-        CGSize s = ThumbSize;
+        CGSize s = ThumbSizeM;
         UIImageView *imgThumb = [[UIImageView alloc] initWithFrame:CGRectMake(980, 4, s.width, s.height)];
         [self.navigationController.navigationBar addSubview:imgThumb];
         self.navThumb = imgThumb;

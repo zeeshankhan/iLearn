@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-#define ThumbSize CGSizeMake(36, 36)
+#define ThumbSizeS       CGSizeMake(36, 36)
+#define ThumbSizeM      CGSizeMake(150, 150)
+#define ThumbSizeL      CGSizeMake(300, 300)
 
 @interface Utility : NSObject
 
