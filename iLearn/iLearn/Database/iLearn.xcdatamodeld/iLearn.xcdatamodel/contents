@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6252" systemVersion="14A379a" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Attendee" representedClassName="Attendee" syncable="YES">
+        <attribute name="attendeeId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="session" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Session" inverseName="attendees" inverseEntity="Session" syncable="YES"/>
+    </entity>
+    <entity name="Feedback" representedClassName="Feedback" syncable="YES">
+        <attribute name="badThings" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="bestThings" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="communicationSkills" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="feedbackId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isAnonymous" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="overallRating" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="topicKnowledge" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="session" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Session" inverseName="feedbacks" inverseEntity="Session" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="feedback" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Session" representedClassName="Session" syncable="YES">
+        <attribute name="dateTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sessionId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="status" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="venue" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="attendees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Attendee" inverseName="session" inverseEntity="Attendee" syncable="YES"/>
+        <relationship name="feedbacks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Feedback" inverseName="session" inverseEntity="Feedback" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="session" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="fname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isAdmin" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="lname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="picPath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="feedback" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Feedback" inverseName="user" inverseEntity="Feedback" syncable="YES"/>
+        <relationship name="session" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Session" inverseName="user" inverseEntity="Session" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Attendee" positionX="99" positionY="170" width="128" height="103"/>
+        <element name="Feedback" positionX="-54" positionY="-310" width="128" height="180"/>
+        <element name="Session" positionX="189" positionY="-187" width="128" height="178"/>
+        <element name="User" positionX="-74" positionY="-13" width="128" height="163"/>
+    </elements>
+</model>
