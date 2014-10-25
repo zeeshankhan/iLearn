@@ -235,7 +235,6 @@
     if (self.imgPopover != nil && [self.imgPopover isPopoverVisible])
         [self.imgPopover dismissPopoverAnimated:YES];
 #else
-    //[((iBOCAppDelegate *)[[UIApplication sharedApplication] delegate]).window.rootViewController dismissViewControllerAnimated:YES completion:NULL];
     [[picker presentingViewController] dismissViewControllerAnimated:YES completion:NULL];
 #endif
     
