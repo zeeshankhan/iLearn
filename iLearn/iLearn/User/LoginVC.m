@@ -67,8 +67,10 @@
     [[self.bRegister layer] setCornerRadius:radius];
 
     [[self.bPhoto layer] setBorderColor:color];
-    [[self.bPhoto layer] setBorderWidth:2];
-    [[self.bPhoto layer] setCornerRadius:self.bPhoto.frame.size.width / 2];
+//    [[self.bPhoto layer] setBorderWidth:2];
+//    [[self.bPhoto layer] setCornerRadius:self.bPhoto.frame.size.width / 2];
+    [[self.bPhoto layer] setBorderWidth:borderWidth];
+    [[self.bPhoto layer] setCornerRadius:radius];
     self.bPhoto.clipsToBounds = YES;
 }
 
@@ -261,6 +263,7 @@
     
     User *usr = [[User_DM sharedInstance] loggedInUser];
     self.navThumb.image = [Utility imageSFor:usr.userId];
+    self.navThumb.frame = CGRectMake(self.navThumb.frame.origin.x, self.navThumb.frame.origin.y, ThumbSizeS.width, ThumbSizeS.height);
     self.navThumb.hidden = NO;
     
     if (self.navName == nil) {
