@@ -22,7 +22,7 @@
 		<key>48DAF85D5CA1546077165263FEDBB59ED0214F15</key>
 		<string>../../..</string>
 		<key>c772d72d-d740-72d4-2cd2-ce57b7db7bff</key>
-		<string>../../../../..</string>
+		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/zeeshankhan/iLearn.git</string>
@@ -38,7 +38,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>c772d72d-d740-72d4-2cd2-ce57b7db7bff</string>
 			<key>IDESourceControlWCCName</key>
-			<string>..</string>
+			<string></string>
 		</dict>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>

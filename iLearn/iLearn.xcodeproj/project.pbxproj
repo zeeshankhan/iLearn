@@ -22,6 +22,10 @@
 		B3794D3019F0E1CD0076DAD8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3794D2F19F0E1CD0076DAD8 /* CoreData.framework */; };
 		D021885F19F425C1000A4483 /* AttendanceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D021885D19F425C1000A4483 /* AttendanceVC.m */; };
 		D021886019F425C1000A4483 /* AttendanceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D021885E19F425C1000A4483 /* AttendanceVC.xib */; };
+		D02282EE1A87A9CE006FA667 /* _Attendee.m in Sources */ = {isa = PBXBuildFile; fileRef = D02282E71A87A9CE006FA667 /* _Attendee.m */; };
+		D02282EF1A87A9CE006FA667 /* _Feedback.m in Sources */ = {isa = PBXBuildFile; fileRef = D02282E91A87A9CE006FA667 /* _Feedback.m */; };
+		D02282F01A87A9CE006FA667 /* _Session.m in Sources */ = {isa = PBXBuildFile; fileRef = D02282EB1A87A9CE006FA667 /* _Session.m */; };
+		D02282F11A87A9CE006FA667 /* _User.m in Sources */ = {isa = PBXBuildFile; fileRef = D02282ED1A87A9CE006FA667 /* _User.m */; };
 		D028040519FB4F7200525F8A /* Attendee.m in Sources */ = {isa = PBXBuildFile; fileRef = D028040419FB4F7200525F8A /* Attendee.m */; };
 		D028040819FB658B00525F8A /* Attendance_DM.m in Sources */ = {isa = PBXBuildFile; fileRef = D028040719FB658B00525F8A /* Attendance_DM.m */; };
 		D028040C19FBA60E00525F8A /* RoundThumbCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D028040A19FBA60E00525F8A /* RoundThumbCell.m */; };
@@ -44,6 +48,8 @@
 		D07350C319F16584009C8D34 /* User_DM.m in Sources */ = {isa = PBXBuildFile; fileRef = D07350C219F16584009C8D34 /* User_DM.m */; };
 		D099687B19FA84D70021624E /* UIImage+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = D099687A19FA84D70021624E /* UIImage+Util.m */; };
 		D099687E19FA8BC80021624E /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = D099687D19FA8BC80021624E /* Utility.m */; };
+		D0E1F0FC1A8740ED0024248B /* UserVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E1F0FA1A8740ED0024248B /* UserVC.m */; };
+		D0E1F0FD1A8740ED0024248B /* UserVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E1F0FB1A8740ED0024248B /* UserVC.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +83,14 @@
 		D021885C19F425C1000A4483 /* AttendanceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendanceVC.h; sourceTree = "<group>"; };
 		D021885D19F425C1000A4483 /* AttendanceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendanceVC.m; sourceTree = "<group>"; };
 		D021885E19F425C1000A4483 /* AttendanceVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttendanceVC.xib; sourceTree = "<group>"; };
+		D02282E61A87A9CE006FA667 /* _Attendee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Attendee.h; sourceTree = "<group>"; };
+		D02282E71A87A9CE006FA667 /* _Attendee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Attendee.m; sourceTree = "<group>"; };
+		D02282E81A87A9CE006FA667 /* _Feedback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Feedback.h; sourceTree = "<group>"; };
+		D02282E91A87A9CE006FA667 /* _Feedback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Feedback.m; sourceTree = "<group>"; };
+		D02282EA1A87A9CE006FA667 /* _Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Session.h; sourceTree = "<group>"; };
+		D02282EB1A87A9CE006FA667 /* _Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Session.m; sourceTree = "<group>"; };
+		D02282EC1A87A9CE006FA667 /* _User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _User.h; sourceTree = "<group>"; };
+		D02282ED1A87A9CE006FA667 /* _User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _User.m; sourceTree = "<group>"; };
 		D028040319FB4F7200525F8A /* Attendee.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendee.h; sourceTree = "<group>"; };
 		D028040419FB4F7200525F8A /* Attendee.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attendee.m; sourceTree = "<group>"; };
 		D028040619FB658B00525F8A /* Attendance_DM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attendance_DM.h; sourceTree = "<group>"; };
@@ -115,6 +129,9 @@
 		D099687A19FA84D70021624E /* UIImage+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Util.m"; sourceTree = "<group>"; };
 		D099687C19FA8BC80021624E /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		D099687D19FA8BC80021624E /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
+		D0E1F0F91A8740ED0024248B /* UserVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserVC.h; sourceTree = "<group>"; };
+		D0E1F0FA1A8740ED0024248B /* UserVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserVC.m; sourceTree = "<group>"; };
+		D0E1F0FB1A8740ED0024248B /* UserVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserVC.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +254,14 @@
 		D07350AF19F152C7009C8D34 /* Database */ = {
 			isa = PBXGroup;
 			children = (
+				D02282E61A87A9CE006FA667 /* _Attendee.h */,
+				D02282E71A87A9CE006FA667 /* _Attendee.m */,
+				D02282E81A87A9CE006FA667 /* _Feedback.h */,
+				D02282E91A87A9CE006FA667 /* _Feedback.m */,
+				D02282EA1A87A9CE006FA667 /* _Session.h */,
+				D02282EB1A87A9CE006FA667 /* _Session.m */,
+				D02282EC1A87A9CE006FA667 /* _User.h */,
+				D02282ED1A87A9CE006FA667 /* _User.m */,
 				D028040319FB4F7200525F8A /* Attendee.h */,
 				D028040419FB4F7200525F8A /* Attendee.m */,
 				D031545219F22DA30076EC5A /* Feedback.h */,
@@ -260,6 +285,9 @@
 				D07350BC19F15327009C8D34 /* LoginVC.xib */,
 				D07350C119F16584009C8D34 /* User_DM.h */,
 				D07350C219F16584009C8D34 /* User_DM.m */,
+				D0E1F0F91A8740ED0024248B /* UserVC.h */,
+				D0E1F0FA1A8740ED0024248B /* UserVC.m */,
+				D0E1F0FB1A8740ED0024248B /* UserVC.xib */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -382,6 +410,7 @@
 				B3794CB819F0DFEC0076DAD8 /* InfoPlist.strings in Resources */,
 				D031545119F22CAB0076EC5A /* FeedbackVC.xib in Resources */,
 				B3794CC019F0DFEC0076DAD8 /* Images.xcassets in Resources */,
+				D0E1F0FD1A8740ED0024248B /* UserVC.xib in Resources */,
 				D031544C19F22C970076EC5A /* SessionVC.xib in Resources */,
 				D021886019F425C1000A4483 /* AttendanceVC.xib in Resources */,
 				D028040D19FBA60E00525F8A /* RoundThumbCell.xib in Resources */,
@@ -415,14 +444,19 @@
 				D099687E19FA8BC80021624E /* Utility.m in Sources */,
 				D031545D19F22DCB0076EC5A /* Session_DM.m in Sources */,
 				D031546419F2AD0E0076EC5A /* SessionListCell.m in Sources */,
+				D0E1F0FC1A8740ED0024248B /* UserVC.m in Sources */,
 				D021885F19F425C1000A4483 /* AttendanceVC.m in Sources */,
 				D031545919F22DA30076EC5A /* Session.m in Sources */,
+				D02282EE1A87A9CE006FA667 /* _Attendee.m in Sources */,
+				D02282F01A87A9CE006FA667 /* _Session.m in Sources */,
 				D031546019F254380076EC5A /* Feedback_DM.m in Sources */,
 				D028040819FB658B00525F8A /* Attendance_DM.m in Sources */,
 				D031545819F22DA30076EC5A /* Feedback.m in Sources */,
+				D02282F11A87A9CE006FA667 /* _User.m in Sources */,
 				D07350B719F152C7009C8D34 /* DBManager.m in Sources */,
 				D031544B19F22C970076EC5A /* SessionVC.m in Sources */,
 				D028040C19FBA60E00525F8A /* RoundThumbCell.m in Sources */,
+				D02282EF1A87A9CE006FA667 /* _Feedback.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,20 +1,13 @@
-//
-//  Attendee.m
-//  iLearn
-//
-//  Created by Zeeshan Khan on 25/10/14.
-//  Copyright (c) 2014 Zeeshan. All rights reserved.
-//
-
 #import "Attendee.h"
-#import "Session.h"
 
+@interface Attendee ()
+
+// Private interface goes here.
+
+@end
 
 @implementation Attendee
 
-@dynamic name;
-@dynamic userId;
-@dynamic attendeeId;
-@dynamic session;
+// Custom logic goes here.
 
 @end

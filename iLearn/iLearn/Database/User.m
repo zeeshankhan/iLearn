@@ -1,23 +1,13 @@
-//
-//  User.m
-//  iLearn
-//
-//  Created by Zeeshan Khan on 17/10/14.
-//  Copyright (c) 2014 Zeeshan. All rights reserved.
-//
-
 #import "User.h"
 
+@interface User ()
+
+// Private interface goes here.
+
+@end
 
 @implementation User
 
-@dynamic fname;
-@dynamic lname;
-@dynamic password;
-@dynamic picPath;
-@dynamic userId;
-@dynamic session;
-@dynamic feedback;
-@dynamic isAdmin;
+// Custom logic goes here.
 
 @end

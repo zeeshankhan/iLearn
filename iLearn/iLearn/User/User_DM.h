@@ -16,6 +16,12 @@
 #define kUserPassword                   @"password"
 #define kUserIsAdmin                     @"isAdmin"
 
+typedef NS_ENUM(NSUInteger, UserType) {
+    UserTypePresenter = 0,
+    UserTypeParticipant,
+    UserTypeRequester,
+};
+
 
 @interface User_DM : NSObject
 

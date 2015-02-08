@@ -85,10 +85,11 @@
     
     Attendee *row = (Attendee*)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:context];
     if (row) {
-        row.session = [dicAttendee objectForKey:kAttendeeSession];
+        Session *ses = [dicAttendee objectForKey:kAttendeeSession];
+        row.session = [NSSet setWithObject:ses];
         row.userId = [Utility validString:[dicAttendee objectForKey:kAttendeeUserId]];
         row.name = [Utility validString:[dicAttendee objectForKey:kAttendeeName]];
-        row.attendeeId = [NSString stringWithFormat:@"%@_%@", row.session.name, row.name];
+        row.attendeeId = [NSString stringWithFormat:@"%@_%@", ses.name, row.name];
     }
     else {
         NSLog(@"CoreData Error: Unable to insert row, Attendee row is nil.");
@@ -98,5 +99,19 @@
     NSLog(@"Attendee Added into data base.");
     return row;
 }
+
+- (void)deleteAttendee:(Attendee*)attendee {
+    
+    if (attendee == nil) {
+        NSLog(@"Attendee Object is nil.");
+    }
+    
+    NSManagedObjectContext *context = [[DBManager sharedInstance] managedObjectContext];
+    [context deleteObject:attendee];
+    
+    [[DBManager sharedInstance] saveContext];
+    NSLog(@"Attendee deleted from data base.");
+}
+
 
 @end

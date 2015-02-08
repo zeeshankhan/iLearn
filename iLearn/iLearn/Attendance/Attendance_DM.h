@@ -20,5 +20,6 @@
 - (NSArray*)getAttendees;
 - (Attendee*)addAttendee:(NSDictionary*)dicAttendee;
 - (NSArray*)getAttendeesForSession:(NSString*)sessionId;
+- (void)deleteAttendee:(Attendee*)attendee;
 
 @end

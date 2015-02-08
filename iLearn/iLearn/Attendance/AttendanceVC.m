@@ -31,6 +31,7 @@
     self.title = @"Attendance";
     self.lblSessionName.text = self.session.name;
     self.arrAttendees = [[[Attendance_DM sharedInstance] getAttendeesForSession:self.session.sessionId] mutableCopy];
+//    self.tAttendees.allowsMultipleSelectionDuringEditing = NO;
 
     NSArray *arrUsrs = [[User_DM sharedInstance] getUsers];
     self.arrUsers = [arrUsrs mutableCopy];
@@ -114,8 +115,52 @@
         [self.arrUsers removeObject:usr];
         [self.tUsers reloadData];
         [self.tAttendees reloadData];
+
     }
 }
+
+#pragma mark - Table Editing
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    if ([tableView isEqual:self.tUsers])
+        return YES;
+    else
+        return NO;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // No editing style if not editing or the index path is nil.
+    //    if (self.editing == NO || !indexPath)
+    //        return UITableViewCellEditingStyleNone;
+    
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)aTableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self removeFromReviewWithIndexPath:indexPath];
+    }
+}
+
+- (void)removeFromReviewWithIndexPath:(NSIndexPath*)indexPath {
+    
+    Attendee *attendee = (Attendee*)[self.arrAttendees objectAtIndex:indexPath.row];
+    NSString *usrId = [Utility validString:attendee.userId];
+    if ([usrId isEqualToString:@""] == NO) {
+        User *usr = [[User_DM sharedInstance] getUserWithId:usrId];
+        [self.arrUsers addObject:usr];
+    }
+    [[Attendance_DM sharedInstance] deleteAttendee:attendee];
+    [self.arrAttendees removeObject:attendee];
+    
+    [self.tUsers reloadData];
+    [self.tAttendees reloadData];
+}
+
+#pragma mark - UITextField delegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 //    [textField resignFirstResponder];

@@ -11,6 +11,7 @@
 #import "User_DM.h"
 #import "SessionVC.h"
 #import "Feedback.h"
+#import "UserVC.h"
 
 @interface LoginVC () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *txtUserid;
@@ -38,6 +39,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self notAMemberAction:self.switchMember];
+    
+    [self.txtUserid becomeFirstResponder];
+//    self.txtUserid.text = @"E20043650";
+//    self.txtPassword.text = @"123456";
     
 //    [[User_DM sharedInstance] populateUsersFromList];
     
@@ -79,6 +84,11 @@
     self.title = @"Login";
     if (self.navName) self.navName.hidden = YES;
     if (self.navThumb) self.navThumb.hidden = YES;
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+//    [self editUser];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -252,6 +262,12 @@
     }
 }
 
+- (void)editUser {
+    
+    UserVC *obj = [[UserVC alloc] initWithNibName:@"UserVC" bundle:nil];
+    [self.navigationController pushViewController:obj animated:YES];
+}
+
 - (void)showLoginDetails {
     
     if (self.navThumb == nil) {
@@ -259,7 +275,17 @@
         UIImageView *imgThumb = [[UIImageView alloc] initWithFrame:CGRectMake(980, 4, s.width, s.height)];
         [self.navigationController.navigationBar addSubview:imgThumb];
         self.navThumb = imgThumb;
+        [[self.navThumb layer] setBorderColor:[UIColor whiteColor].CGColor];
+        [[self.navThumb layer] setBorderWidth:0.8];
+        [[self.navThumb layer] setCornerRadius:4];
+        
+//        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [btn setBackgroundColor:[UIColor redColor]];
+//        [btn setFrame:self.navThumb.frame];
+//        [btn addTarget:self action:@selector(editUser) forControlEvents:UIControlEventTouchUpInside];
+//        [self.navigationController.navigationBar addSubview:btn];
     }
+
     
     User *usr = [[User_DM sharedInstance] loggedInUser];
     self.navThumb.image = [Utility imageSFor:usr.userId];
