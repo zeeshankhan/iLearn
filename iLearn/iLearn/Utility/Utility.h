@@ -24,4 +24,6 @@
 + (id)plistDataWithPath:(NSString*)path;
 + (void)saveThumb:(UIImage*)thumb withName:(NSString*)name;
 
++ (void)showAlertWithTitle:(NSString*)title andMessage:(NSString*)msg;
+
 @end

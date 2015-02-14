@@ -10,6 +10,11 @@
 
 @implementation Utility
 
++ (void)showAlertWithTitle:(NSString*)title andMessage:(NSString*)msg {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:msg delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
+}
+
 + (NSString*)validString:(NSString*)str {
     
     if (str == nil)

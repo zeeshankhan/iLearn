@@ -123,6 +123,7 @@
     NSString *strPassword = [Utility validString:self.txtPassword.text];
     if ([strUserId isEqualToString:@""] || [strPassword isEqualToString:@""]) {
         NSLog(@"User id and password are mandatory field.");
+        [Utility showAlertWithTitle:@"User id and password are mandatory field." andMessage:nil];
         return;
     }
 
@@ -134,6 +135,7 @@
         
         if ([strPassword isEqualToString:usr.password]) {
             NSLog(@"User Exist %@ %@", usr.fname, usr.lname);
+            [Utility showAlertWithTitle:@"User already Exist" andMessage:nil];
             [[User_DM sharedInstance] setLoggedInUser:usr];
             [self showLoginDetails];
             [self gotoSessions];
@@ -160,10 +162,20 @@
 
     [self dismissKeyboard];
 
+    NSString *fname = [Utility validString:self.txtFirstName.text];
+    NSString *lname = [Utility validString:self.txtPassword.text];
+    if ([fname isEqualToString:@""] || [lname isEqualToString:@""]) {
+        NSLog(@"Please enter your full name.");
+        [Utility showAlertWithTitle:@"Please enter your full name." andMessage:nil];
+        return;
+    }
+
+    
     NSString *strUserId = [[Utility validString:self.txtUserid.text] lowercaseString];
     NSString *strPassword = [Utility validString:self.txtPassword.text];
     if ([strUserId isEqualToString:@""] || [strPassword isEqualToString:@""]) {
         NSLog(@"User id and password are mandatory field.");
+        [Utility showAlertWithTitle:@"User id and password are mandatory field." andMessage:nil];
         return;
     }
     
@@ -176,9 +188,9 @@
         }
 
         NSDictionary *dicUser = @{kUserId: strUserId
-                                  , kUserPassword: [Utility validString:self.txtPassword.text]
-                                  , kUserFirstName: [Utility validString:self.txtFirstName.text]
-                                  , kUserLastName: [Utility validString:self.txtLastName.text]
+                                  , kUserPassword: strPassword
+                                  , kUserFirstName: fname
+                                  , kUserLastName: lname
                                   , kUserPicPath: @""
                                   , kUserIsAdmin: ([strUserId isEqualToString:@"e20043650"]) ? [NSNumber numberWithBool:YES] : [NSNumber numberWithBool:NO]
                                   };
@@ -199,6 +211,7 @@
     }
     else {
         NSLog(@"User Exist.");
+        [Utility showAlertWithTitle:@"User already exist." andMessage:nil];
     }
 }
 
