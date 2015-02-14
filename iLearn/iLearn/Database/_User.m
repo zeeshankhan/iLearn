@@ -13,8 +13,9 @@ const struct UserAttributes UserAttributes = {
 };
 
 const struct UserRelationships UserRelationships = {
-	.feedback = @"feedback",
-	.session = @"session",
+	.feedbacks = @"feedbacks",
+	.requestedSessions = @"requestedSessions",
+	.sessions = @"sessions",
 };
 
 @implementation UserID
@@ -82,25 +83,36 @@ const struct UserRelationships UserRelationships = {
 
 @dynamic userId;
 
-@dynamic feedback;
+@dynamic feedbacks;
 
-- (NSMutableSet*)feedbackSet {
-	[self willAccessValueForKey:@"feedback"];
+- (NSMutableSet*)feedbacksSet {
+	[self willAccessValueForKey:@"feedbacks"];
 
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"feedback"];
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"feedbacks"];
 
-	[self didAccessValueForKey:@"feedback"];
+	[self didAccessValueForKey:@"feedbacks"];
 	return result;
 }
 
-@dynamic session;
+@dynamic requestedSessions;
 
-- (NSMutableSet*)sessionSet {
-	[self willAccessValueForKey:@"session"];
+- (NSMutableSet*)requestedSessionsSet {
+	[self willAccessValueForKey:@"requestedSessions"];
 
-	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"session"];
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"requestedSessions"];
 
-	[self didAccessValueForKey:@"session"];
+	[self didAccessValueForKey:@"requestedSessions"];
+	return result;
+}
+
+@dynamic sessions;
+
+- (NSMutableSet*)sessionsSet {
+	[self willAccessValueForKey:@"sessions"];
+
+	NSMutableSet *result = (NSMutableSet*)[self mutableSetValueForKey:@"sessions"];
+
+	[self didAccessValueForKey:@"sessions"];
 	return result;
 }
 

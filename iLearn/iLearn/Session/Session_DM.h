@@ -14,6 +14,7 @@
 #define kSessionDateTime                @"SessionDateTime"
 #define kSessionVenue                     @"SessionVenue"
 #define kSessionUser                       @"SessionUser"
+#define kSessionRequestedUser        @"SessionRequestedUser"
 #define kSessionFeedbacks               @"SessionFeedbacks"
 #define kSessionStatus                     @"SessionStatus"
 
@@ -33,7 +34,8 @@ typedef NS_ENUM(NSUInteger, SessionStatus) {
 - (NSArray*)getSessions;
 - (NSArray*)getSessionsForUserId:(NSString*)userId;
 - (Session*)addSession:(NSDictionary*)dicSession;
-- (void)updateSession:(NSDictionary*)dicSession;
+- (Session*)updateSession:(NSDictionary*)dicSession withId:(NSString*)sessionId;
+- (void)deleteSessionWithId:(NSString*)sessId;
 
 @end
 

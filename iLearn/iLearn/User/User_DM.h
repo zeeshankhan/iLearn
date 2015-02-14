@@ -16,6 +16,9 @@
 #define kUserPassword                   @"password"
 #define kUserIsAdmin                     @"isAdmin"
 
+#define kNavItemTag                     1092
+
+
 typedef NS_ENUM(NSUInteger, UserType) {
     UserTypePresenter = 0,
     UserTypeParticipant,
@@ -29,12 +32,16 @@ typedef NS_ENUM(NSUInteger, UserType) {
 
 + (instancetype)sharedInstance;
 
-- (User*)getUserWithId:(NSString*)userId;
+- (BOOL)isAdminLogin;
+
+- (User*)userWithId:(NSString*)userId;
+- (NSArray*)getUsersWithId:(NSString*)userId;
 - (NSArray*)getUsers;
+
 - (void)generateUserList;
 
 - (User*)addUser:(NSDictionary*)dicUser;
-- (void)updateUser:(NSDictionary*)dicUser;
+- (User*)updateUser:(NSDictionary*)dicUser;
 
 - (void)populateUsersFromList;
 

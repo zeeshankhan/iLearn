@@ -24,6 +24,10 @@
 }
 
 - (NSArray*)getSessions {
+    return [self getSessionsWithId:nil];
+}
+
+- (NSArray*)getSessionsWithId:(NSString*)sessId {
     
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:NSStringFromClass([Session class]) inManagedObjectContext:[[DBManager sharedInstance] managedObjectContext]];
     
@@ -33,10 +37,12 @@
     //    [fetchRequest setResultType:resultType];
     //    [fetchRequest setReturnsDistinctResults:YES];
     //    [fetchRequest setPropertiesToFetch:[NSArray arrayWithObject:@"__ATTRIBUTE_NAME__"]];
-    
-    //    NSPredicate *predicate = [self predicateWithAction:action andActivityID:activityId];
-    //    if (predicate != nil)
-    //        [fetchRequest setPredicate:predicate];
+
+    if (sessId != nil && ![sessId isEqualToString:@""]) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"sessionId = %@", sessId];
+        if (predicate != nil)
+            [fetchRequest setPredicate:predicate];
+    }
     
     NSError *error = nil;
     NSArray *arrResult = [[[DBManager sharedInstance] managedObjectContext] executeFetchRequest:fetchRequest error:&error];
@@ -48,8 +54,18 @@
     return arrResult;
 }
 
+- (Session*)sessionWithId:(NSString*)sessId {
+    return [[self getSessionsWithId:sessId] lastObject];
+}
+
 - (NSArray*)getSessionsForUserId:(NSString*)userId {
     return nil;
+}
+
+- (void)deleteSessionWithId:(NSString*)sessId {
+    Session *sess = [self sessionWithId:sessId];
+    [[[DBManager sharedInstance] managedObjectContext] deleteObject:sess];
+    [[DBManager sharedInstance] saveContext];
 }
 
 - (Session*)addSession:(NSDictionary*)dicSession {
@@ -63,8 +79,15 @@
     
     Session *row = (Session*)[[NSManagedObject alloc] initWithEntity:entity insertIntoManagedObjectContext:context];
     if (row) {
-        row.user = [[User_DM sharedInstance] loggedInUser];
-        row.sessionId = [self generateSessionIdForUser:row.user.userId];
+        
+        User *u = [dicSession objectForKey:kSessionRequestedUser];
+        row.requestedUser = u;
+        row.sessionId = [self generateSessionIdForUser:u.userId];
+
+        if ([u.isAdmin boolValue] == YES) row.user = u;
+        else if (![[dicSession objectForKey:kSessionUser] isKindOfClass:[NSNull class]])
+            row.user = [dicSession objectForKey:kSessionUser];
+
         row.name = [Utility validString:[dicSession objectForKey:kSessionName]];
         row.type = [Utility validString:[dicSession objectForKey:kSessionType]];
         row.dateTime = [Utility validString:[dicSession objectForKey:kSessionDateTime]];
@@ -87,8 +110,17 @@
     return [NSString stringWithFormat:@"Session_%@_%@", userid, dt];
 }
 
-- (void)updateSession:(NSDictionary*)dicSession {
-
+- (Session*)updateSession:(NSDictionary*)dicSession withId:(NSString*)sessionId {
+    Session *ses = [self sessionWithId:sessionId];
+    if (![[dicSession objectForKey:kSessionUser] isKindOfClass:[NSNull class]])
+        ses.user = [dicSession objectForKey:kSessionUser];
+    ses.name = [Utility validString:[dicSession objectForKey:kSessionName]];
+    ses.type = [Utility validString:[dicSession objectForKey:kSessionType]];
+    ses.dateTime = [Utility validString:[dicSession objectForKey:kSessionDateTime]];
+    ses.venue = [Utility validString:[dicSession objectForKey:kSessionVenue]];
+    ses.status = [dicSession objectForKey:kSessionStatus];
+    [[DBManager sharedInstance] saveContext];
+    return ses;
 }
 
 @end

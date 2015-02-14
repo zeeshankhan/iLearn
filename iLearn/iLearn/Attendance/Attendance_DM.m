@@ -59,7 +59,7 @@
     //    [fetchRequest setReturnsDistinctResults:YES];
     //    [fetchRequest setPropertiesToFetch:[NSArray arrayWithObject:@"__ATTRIBUTE_NAME__"]];
     
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"session.sessionId == %@", sessionId ];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"session.sessionId CONTAINS %@", sessionId ];
         if (predicate != nil)
             [fetchRequest setPredicate:predicate];
     

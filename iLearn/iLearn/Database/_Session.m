@@ -15,6 +15,7 @@ const struct SessionAttributes SessionAttributes = {
 const struct SessionRelationships SessionRelationships = {
 	.attendees = @"attendees",
 	.feedbacks = @"feedbacks",
+	.requestedUser = @"requestedUser",
 	.user = @"user",
 };
 
@@ -104,6 +105,8 @@ const struct SessionRelationships SessionRelationships = {
 	[self didAccessValueForKey:@"feedbacks"];
 	return result;
 }
+
+@dynamic requestedUser;
 
 @dynamic user;
 

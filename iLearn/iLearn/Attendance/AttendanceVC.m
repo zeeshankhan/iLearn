@@ -123,9 +123,9 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     if ([tableView isEqual:self.tUsers])
-        return YES;
-    else
         return NO;
+    else
+        return YES;
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -150,7 +150,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     Attendee *attendee = (Attendee*)[self.arrAttendees objectAtIndex:indexPath.row];
     NSString *usrId = [Utility validString:attendee.userId];
     if ([usrId isEqualToString:@""] == NO) {
-        User *usr = [[User_DM sharedInstance] getUserWithId:usrId];
+        User *usr = [[User_DM sharedInstance] userWithId:usrId];
         [self.arrUsers addObject:usr];
     }
     [[Attendance_DM sharedInstance] deleteAttendee:attendee];

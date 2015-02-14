@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.iPad.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6246"/>
@@ -10,10 +10,12 @@
                 <outlet property="bAddSess" destination="49S-cq-plY" id="ayh-ZY-XZO"/>
                 <outlet property="lblAddSession" destination="r6A-Dc-Avc" id="lGW-VA-oLs"/>
                 <outlet property="tSessions" destination="wDp-wZ-ewb" id="hjE-LM-Udx"/>
+                <outlet property="txtSBy" destination="I8j-0Y-lY4" id="19L-1j-Fk6"/>
                 <outlet property="txtSDateTime" destination="kyH-yi-Abu" id="M4d-bA-S7p"/>
                 <outlet property="txtSName" destination="o8G-UX-ywP" id="Kfq-oa-AfJ"/>
                 <outlet property="txtSType" destination="hph-ev-c62" id="3BB-fg-d24"/>
                 <outlet property="txtSVenue" destination="lDd-6r-utB" id="c4R-SD-5LJ"/>
+                <outlet property="vBy" destination="28f-XT-skm" id="dNU-ZF-RF0"/>
                 <outlet property="vDT" destination="VfW-We-JQe" id="0Dj-vw-zxz"/>
                 <outlet property="vName" destination="cW6-8p-DHk" id="O9i-N4-fRY"/>
                 <outlet property="vType" destination="tCn-0a-hxq" id="7LM-rI-pyg"/>
@@ -34,10 +36,10 @@
                     <rect key="frame" x="30" y="90" width="450" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="20"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" id="cW6-8p-DHk">
+                <view contentMode="scaleToFill" id="cW6-8p-DHk" userLabel="vName">
                     <rect key="frame" x="30" y="128" width="450" height="55"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -50,7 +52,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" id="tCn-0a-hxq">
+                <view contentMode="scaleToFill" id="tCn-0a-hxq" userLabel="vType">
                     <rect key="frame" x="30" y="203" width="450" height="55"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -63,11 +65,11 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" id="VfW-We-JQe">
+                <view contentMode="scaleToFill" id="VfW-We-JQe" userLabel="vDT">
                     <rect key="frame" x="30" y="278" width="450" height="55"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Session Date &amp; Time &gt;" minimumFontSize="17" clearButtonMode="whileEditing" id="kyH-yi-Abu">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Session Date &amp; Time >" minimumFontSize="17" clearButtonMode="whileEditing" id="kyH-yi-Abu">
                             <rect key="frame" x="15" y="11" width="430" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="20"/>
@@ -87,7 +89,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" id="A4P-jB-2yJ">
+                <view contentMode="scaleToFill" id="A4P-jB-2yJ" userLabel="vVenue">
                     <rect key="frame" x="30" y="353" width="450" height="55"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -100,8 +102,32 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
+                <view contentMode="scaleToFill" id="28f-XT-skm" userLabel="vPresenter">
+                    <rect key="frame" x="30" y="428" width="450" height="55"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Presenter Name >" minimumFontSize="17" clearButtonMode="whileEditing" id="I8j-0Y-lY4">
+                            <rect key="frame" x="15" y="11" width="430" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="20"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="words" spellCheckingType="yes"/>
+                        </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="BUR-3b-DGb">
+                            <rect key="frame" x="0.0" y="0.0" width="450" height="55"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="showUserPicker" destination="-1" eventType="touchUpInside" id="QWT-Ab-LhK"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="49S-cq-plY">
-                    <rect key="frame" x="155" y="443" width="200" height="40"/>
+                    <rect key="frame" x="155" y="518" width="200" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="20"/>
@@ -119,7 +145,7 @@
                     <rect key="frame" x="544" y="90" width="450" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="20"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="100" sectionHeaderHeight="10" sectionFooterHeight="10" id="wDp-wZ-ewb">

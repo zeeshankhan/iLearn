@@ -20,6 +20,10 @@
     return instance;
 }
 
+- (BOOL)isAdminLogin {
+    return [[[self loggedInUser] isAdmin] boolValue];
+}
+
 - (User*)addUser:(NSDictionary*)dicUser {
     
     if (dicUser == nil) {
@@ -46,11 +50,20 @@
     return row;
 }
 
-- (void)updateUser:(NSDictionary*)dicUser {
-    
+- (User*)updateUser:(NSDictionary*)dicUser {
+    User *usr = [self userWithId:@""];
+    return usr;
 }
 
-- (User*)getUserWithId:(NSString*)userId {
+- (User*)userWithId:(NSString*)userId {
+    return [[self getUsersWithId:userId] lastObject];
+}
+
+- (NSArray*)getUsers {
+    return [self getUsersWithId:nil];
+}
+
+- (NSArray*)getUsersWithId:(NSString*)userId {
     
     NSEntityDescription *entityDesc = [NSEntityDescription entityForName:NSStringFromClass([User class]) inManagedObjectContext:[[DBManager sharedInstance] managedObjectContext]];
     
@@ -61,34 +74,11 @@
     //    [fetchRequest setReturnsDistinctResults:YES];
     //    [fetchRequest setPropertiesToFetch:[NSArray arrayWithObject:@"__ATTRIBUTE_NAME__"]];
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId == %@", userId ];
-    if (predicate != nil)
-        [fetchRequest setPredicate:predicate];
-    
-    NSError *error = nil;
-    NSArray *arrResult = [[[DBManager sharedInstance] managedObjectContext] executeFetchRequest:fetchRequest error:&error];
-    
-    if (error != nil) {
-        NSLog(@"GET Users Error: %@", error.debugDescription);
+    if (![[Utility validString:userId] isEqualToString:@""]) {
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"userId == %@", userId ];
+        if (predicate != nil)
+            [fetchRequest setPredicate:predicate];
     }
-    
-    return (arrResult.count >0) ? [arrResult lastObject] : nil;
-}
-
-- (NSArray*)getUsers {
-    
-    NSEntityDescription *entityDesc = [NSEntityDescription entityForName:NSStringFromClass([User class]) inManagedObjectContext:[[DBManager sharedInstance] managedObjectContext]];
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:entityDesc];
-    
-    //    [fetchRequest setResultType:resultType];
-    //    [fetchRequest setReturnsDistinctResults:YES];
-    //    [fetchRequest setPropertiesToFetch:[NSArray arrayWithObject:@"__ATTRIBUTE_NAME__"]];
-    
-    //    NSPredicate *predicate = [self predicateWithAction:action andActivityID:activityId];
-    //    if (predicate != nil)
-    //        [fetchRequest setPredicate:predicate];
     
     NSError *error = nil;
     NSArray *arrResult = [[[DBManager sharedInstance] managedObjectContext] executeFetchRequest:fetchRequest error:&error];
@@ -100,7 +90,9 @@
     return arrResult;
 }
 
+
 #define OldDataLoaded @"IsOldDataLoaded"
+
 - (void)populateUsersFromList {
     
     BOOL isAlreadyThere = [[NSUserDefaults standardUserDefaults] boolForKey:OldDataLoaded];

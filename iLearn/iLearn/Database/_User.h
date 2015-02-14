@@ -13,11 +13,13 @@ extern const struct UserAttributes {
 } UserAttributes;
 
 extern const struct UserRelationships {
-	__unsafe_unretained NSString *feedback;
-	__unsafe_unretained NSString *session;
+	__unsafe_unretained NSString *feedbacks;
+	__unsafe_unretained NSString *requestedSessions;
+	__unsafe_unretained NSString *sessions;
 } UserRelationships;
 
 @class Feedback;
+@class Session;
 @class Session;
 
 @interface UserID : NSManagedObjectID {}
@@ -57,29 +59,41 @@ extern const struct UserRelationships {
 
 //- (BOOL)validateUserId:(id*)value_ error:(NSError**)error_;
 
-@property (nonatomic, strong) NSSet *feedback;
+@property (nonatomic, strong) NSSet *feedbacks;
 
-- (NSMutableSet*)feedbackSet;
+- (NSMutableSet*)feedbacksSet;
 
-@property (nonatomic, strong) NSSet *session;
+@property (nonatomic, strong) NSSet *requestedSessions;
 
-- (NSMutableSet*)sessionSet;
+- (NSMutableSet*)requestedSessionsSet;
 
-@end
+@property (nonatomic, strong) NSSet *sessions;
 
-@interface _User (FeedbackCoreDataGeneratedAccessors)
-- (void)addFeedback:(NSSet*)value_;
-- (void)removeFeedback:(NSSet*)value_;
-- (void)addFeedbackObject:(Feedback*)value_;
-- (void)removeFeedbackObject:(Feedback*)value_;
+- (NSMutableSet*)sessionsSet;
 
 @end
 
-@interface _User (SessionCoreDataGeneratedAccessors)
-- (void)addSession:(NSSet*)value_;
-- (void)removeSession:(NSSet*)value_;
-- (void)addSessionObject:(Session*)value_;
-- (void)removeSessionObject:(Session*)value_;
+@interface _User (FeedbacksCoreDataGeneratedAccessors)
+- (void)addFeedbacks:(NSSet*)value_;
+- (void)removeFeedbacks:(NSSet*)value_;
+- (void)addFeedbacksObject:(Feedback*)value_;
+- (void)removeFeedbacksObject:(Feedback*)value_;
+
+@end
+
+@interface _User (RequestedSessionsCoreDataGeneratedAccessors)
+- (void)addRequestedSessions:(NSSet*)value_;
+- (void)removeRequestedSessions:(NSSet*)value_;
+- (void)addRequestedSessionsObject:(Session*)value_;
+- (void)removeRequestedSessionsObject:(Session*)value_;
+
+@end
+
+@interface _User (SessionsCoreDataGeneratedAccessors)
+- (void)addSessions:(NSSet*)value_;
+- (void)removeSessions:(NSSet*)value_;
+- (void)addSessionsObject:(Session*)value_;
+- (void)removeSessionsObject:(Session*)value_;
 
 @end
 
@@ -106,10 +120,13 @@ extern const struct UserRelationships {
 - (NSString*)primitiveUserId;
 - (void)setPrimitiveUserId:(NSString*)value;
 
-- (NSMutableSet*)primitiveFeedback;
-- (void)setPrimitiveFeedback:(NSMutableSet*)value;
+- (NSMutableSet*)primitiveFeedbacks;
+- (void)setPrimitiveFeedbacks:(NSMutableSet*)value;
 
-- (NSMutableSet*)primitiveSession;
-- (void)setPrimitiveSession:(NSMutableSet*)value;
+- (NSMutableSet*)primitiveRequestedSessions;
+- (void)setPrimitiveRequestedSessions:(NSMutableSet*)value;
+
+- (NSMutableSet*)primitiveSessions;
+- (void)setPrimitiveSessions:(NSMutableSet*)value;
 
 @end

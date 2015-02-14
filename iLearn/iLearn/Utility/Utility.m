@@ -12,6 +12,9 @@
 
 + (NSString*)validString:(NSString*)str {
     
+    if (str == nil)
+        return @"";
+    
     if (![str isKindOfClass:[NSString class]]) {
         return @"";
     }

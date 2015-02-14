@@ -15,11 +15,13 @@ extern const struct SessionAttributes {
 extern const struct SessionRelationships {
 	__unsafe_unretained NSString *attendees;
 	__unsafe_unretained NSString *feedbacks;
+	__unsafe_unretained NSString *requestedUser;
 	__unsafe_unretained NSString *user;
 } SessionRelationships;
 
 @class Attendee;
 @class Feedback;
+@class User;
 @class User;
 
 @interface SessionID : NSManagedObjectID {}
@@ -66,6 +68,10 @@ extern const struct SessionRelationships {
 @property (nonatomic, strong) NSSet *feedbacks;
 
 - (NSMutableSet*)feedbacksSet;
+
+@property (nonatomic, strong) User *requestedUser;
+
+//- (BOOL)validateRequestedUser:(id*)value_ error:(NSError**)error_;
 
 @property (nonatomic, strong) User *user;
 
@@ -114,6 +120,9 @@ extern const struct SessionRelationships {
 
 - (NSMutableSet*)primitiveFeedbacks;
 - (void)setPrimitiveFeedbacks:(NSMutableSet*)value;
+
+- (User*)primitiveRequestedUser;
+- (void)setPrimitiveRequestedUser:(User*)value;
 
 - (User*)primitiveUser;
 - (void)setPrimitiveUser:(User*)value;
