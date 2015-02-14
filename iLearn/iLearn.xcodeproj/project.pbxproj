@@ -14,11 +14,6 @@
 		B3794CBA19F0DFEC0076DAD8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B3794CB919F0DFEC0076DAD8 /* main.m */; };
 		B3794CBE19F0DFEC0076DAD8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B3794CBD19F0DFEC0076DAD8 /* AppDelegate.m */; };
 		B3794CC019F0DFEC0076DAD8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3794CBF19F0DFEC0076DAD8 /* Images.xcassets */; };
-		B3794CC719F0DFEC0076DAD8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3794CC619F0DFEC0076DAD8 /* XCTest.framework */; };
-		B3794CC819F0DFEC0076DAD8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3794CAD19F0DFEC0076DAD8 /* Foundation.framework */; };
-		B3794CC919F0DFEC0076DAD8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3794CB119F0DFEC0076DAD8 /* UIKit.framework */; };
-		B3794CD119F0DFEC0076DAD8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3794CCF19F0DFEC0076DAD8 /* InfoPlist.strings */; };
-		B3794CD319F0DFEC0076DAD8 /* iLearnTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B3794CD219F0DFEC0076DAD8 /* iLearnTests.m */; };
 		B3794D3019F0E1CD0076DAD8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3794D2F19F0E1CD0076DAD8 /* CoreData.framework */; };
 		D021885F19F425C1000A4483 /* AttendanceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = D021885D19F425C1000A4483 /* AttendanceVC.m */; };
 		D021886019F425C1000A4483 /* AttendanceVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D021885E19F425C1000A4483 /* AttendanceVC.xib */; };
@@ -52,16 +47,6 @@
 		D0E1F0FD1A8740ED0024248B /* UserVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0E1F0FB1A8740ED0024248B /* UserVC.xib */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		B3794CCA19F0DFEC0076DAD8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B3794CA219F0DFEC0076DAD8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B3794CA919F0DFEC0076DAD8;
-			remoteInfo = iLearn;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		B3794CAA19F0DFEC0076DAD8 /* iLearn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iLearn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3794CAD19F0DFEC0076DAD8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -74,11 +59,6 @@
 		B3794CBC19F0DFEC0076DAD8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		B3794CBD19F0DFEC0076DAD8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		B3794CBF19F0DFEC0076DAD8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		B3794CC519F0DFEC0076DAD8 /* iLearnTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iLearnTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3794CC619F0DFEC0076DAD8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		B3794CCE19F0DFEC0076DAD8 /* iLearnTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iLearnTests-Info.plist"; sourceTree = "<group>"; };
-		B3794CD019F0DFEC0076DAD8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		B3794CD219F0DFEC0076DAD8 /* iLearnTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iLearnTests.m; sourceTree = "<group>"; };
 		B3794D2F19F0E1CD0076DAD8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		D021885C19F425C1000A4483 /* AttendanceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttendanceVC.h; sourceTree = "<group>"; };
 		D021885D19F425C1000A4483 /* AttendanceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttendanceVC.m; sourceTree = "<group>"; };
@@ -146,16 +126,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B3794CC219F0DFEC0076DAD8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B3794CC719F0DFEC0076DAD8 /* XCTest.framework in Frameworks */,
-				B3794CC919F0DFEC0076DAD8 /* UIKit.framework in Frameworks */,
-				B3794CC819F0DFEC0076DAD8 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -163,7 +133,6 @@
 			isa = PBXGroup;
 			children = (
 				B3794CB319F0DFEC0076DAD8 /* iLearn */,
-				B3794CCC19F0DFEC0076DAD8 /* iLearnTests */,
 				B3794CAC19F0DFEC0076DAD8 /* Frameworks */,
 				B3794CAB19F0DFEC0076DAD8 /* Products */,
 			);
@@ -173,7 +142,6 @@
 			isa = PBXGroup;
 			children = (
 				B3794CAA19F0DFEC0076DAD8 /* iLearn.app */,
-				B3794CC519F0DFEC0076DAD8 /* iLearnTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -185,7 +153,6 @@
 				B3794CAD19F0DFEC0076DAD8 /* Foundation.framework */,
 				B3794CAF19F0DFEC0076DAD8 /* CoreGraphics.framework */,
 				B3794CB119F0DFEC0076DAD8 /* UIKit.framework */,
-				B3794CC619F0DFEC0076DAD8 /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -214,24 +181,6 @@
 				B3794CB619F0DFEC0076DAD8 /* InfoPlist.strings */,
 				B3794CB919F0DFEC0076DAD8 /* main.m */,
 				B3794CBB19F0DFEC0076DAD8 /* iLearn-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		B3794CCC19F0DFEC0076DAD8 /* iLearnTests */ = {
-			isa = PBXGroup;
-			children = (
-				B3794CD219F0DFEC0076DAD8 /* iLearnTests.m */,
-				B3794CCD19F0DFEC0076DAD8 /* Supporting Files */,
-			);
-			path = iLearnTests;
-			sourceTree = "<group>";
-		};
-		B3794CCD19F0DFEC0076DAD8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				B3794CCE19F0DFEC0076DAD8 /* iLearnTests-Info.plist */,
-				B3794CCF19F0DFEC0076DAD8 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -350,24 +299,6 @@
 			productReference = B3794CAA19F0DFEC0076DAD8 /* iLearn.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B3794CC419F0DFEC0076DAD8 /* iLearnTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B3794CD919F0DFEC0076DAD8 /* Build configuration list for PBXNativeTarget "iLearnTests" */;
-			buildPhases = (
-				B3794CC119F0DFEC0076DAD8 /* Sources */,
-				B3794CC219F0DFEC0076DAD8 /* Frameworks */,
-				B3794CC319F0DFEC0076DAD8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B3794CCB19F0DFEC0076DAD8 /* PBXTargetDependency */,
-			);
-			name = iLearnTests;
-			productName = iLearnTests;
-			productReference = B3794CC519F0DFEC0076DAD8 /* iLearnTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -376,11 +307,6 @@
 			attributes = {
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Zeeshan;
-				TargetAttributes = {
-					B3794CC419F0DFEC0076DAD8 = {
-						TestTargetID = B3794CA919F0DFEC0076DAD8;
-					};
-				};
 			};
 			buildConfigurationList = B3794CA519F0DFEC0076DAD8 /* Build configuration list for PBXProject "iLearn" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -395,7 +321,6 @@
 			projectRoot = "";
 			targets = (
 				B3794CA919F0DFEC0076DAD8 /* iLearn */,
-				B3794CC419F0DFEC0076DAD8 /* iLearnTests */,
 			);
 		};
 /* End PBXProject section */
@@ -414,14 +339,6 @@
 				D031544C19F22C970076EC5A /* SessionVC.xib in Resources */,
 				D021886019F425C1000A4483 /* AttendanceVC.xib in Resources */,
 				D028040D19FBA60E00525F8A /* RoundThumbCell.xib in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B3794CC319F0DFEC0076DAD8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B3794CD119F0DFEC0076DAD8 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -460,37 +377,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B3794CC119F0DFEC0076DAD8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B3794CD319F0DFEC0076DAD8 /* iLearnTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B3794CCB19F0DFEC0076DAD8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B3794CA919F0DFEC0076DAD8 /* iLearn */;
-			targetProxy = B3794CCA19F0DFEC0076DAD8 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B3794CB619F0DFEC0076DAD8 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B3794CB719F0DFEC0076DAD8 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		B3794CCF19F0DFEC0076DAD8 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				B3794CD019F0DFEC0076DAD8 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -605,46 +498,6 @@
 			};
 			name = Release;
 		};
-		B3794CDA19F0DFEC0076DAD8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iLearn.app/iLearn";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iLearn/iLearn-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "iLearnTests/iLearnTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		B3794CDB19F0DFEC0076DAD8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/iLearn.app/iLearn";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "iLearn/iLearn-Prefix.pch";
-				INFOPLIST_FILE = "iLearnTests/iLearnTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -662,15 +515,6 @@
 			buildConfigurations = (
 				B3794CD719F0DFEC0076DAD8 /* Debug */,
 				B3794CD819F0DFEC0076DAD8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B3794CD919F0DFEC0076DAD8 /* Build configuration list for PBXNativeTarget "iLearnTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B3794CDA19F0DFEC0076DAD8 /* Debug */,
-				B3794CDB19F0DFEC0076DAD8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -45,8 +45,8 @@
 //    self.txtUserid.text = @"E20043650";
 //    self.txtPassword.text = @"123456";
 
-    self.txtUserid.text = @"111";
-    self.txtPassword.text = @"111";
+//    self.txtUserid.text = @"111";
+//    self.txtPassword.text = @"111";
 
 //    [[User_DM sharedInstance] populateUsersFromList];
     
