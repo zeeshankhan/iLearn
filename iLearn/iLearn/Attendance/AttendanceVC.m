@@ -113,7 +113,8 @@
         Attendee *attendee = [[Attendance_DM sharedInstance] addAttendee:dicAttendee];
         [self.arrAttendees addObject:attendee];
         [self.arrUsers removeObject:usr];
-        [self.tUsers reloadData];
+        [self.tUsers deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
         [self.tAttendees reloadData];
 
     }
@@ -157,7 +158,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     [self.arrAttendees removeObject:attendee];
     
     [self.tUsers reloadData];
-    [self.tAttendees reloadData];
+//    [self.tAttendees reloadData];
+    [self.tAttendees deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 #pragma mark - UITextField delegate

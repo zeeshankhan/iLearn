@@ -24,6 +24,10 @@
     return [[[self loggedInUser] isAdmin] boolValue];
 }
 
+- (NSString*)loggedInUserId {
+    return [[self loggedInUser] userId];
+}
+
 - (User*)addUser:(NSDictionary*)dicUser {
     
     if (dicUser == nil) {

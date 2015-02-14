@@ -386,7 +386,7 @@
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     Session *ses = (Session*)[[self.arrTableSessions objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    if ([ses.status integerValue] == SessionStatusRequested)
+    if ([ses.status integerValue] == SessionStatusRequested && [ses.requestedUser.userId isEqualToString:[[User_DM sharedInstance] loggedInUserId]])
         return YES;
     
     return NO;
@@ -414,24 +414,26 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
     NSMutableArray *arrSec = [self.arrTableSessions objectAtIndex:indexPath.section];
     Session *ses = (Session*)[arrSec objectAtIndex:indexPath.row];
     if ([ses.status integerValue] == SessionStatusRequested) {
+    
+        if (self.selectedRequestedSession && [ses.sessionId isEqualToString:self.selectedRequestedSession.sessionId]) {
+            self.txtSName.text = @"";
+            self.txtSType.text = @"";
+            self.txtSDateTime.text = @"";
+            self.txtSVenue.text = @"";
+            self.txtSBy.text = @"";
+        }
         
-//        if (self.selectedRequestedSession && [ses.sessionId isEqualToString:self.selectedRequestedSession.sessionId]) {
-//            self.txtSName.text = @"";
-//            self.txtSType.text = @"";
-//            self.txtSDateTime.text = @"";
-//            self.txtSVenue.text = @"";
-//            self.txtSBy.text = @"";
-//        }
-        
-//        [[Session_DM sharedInstance] deleteSessionWithId:ses.sessionId];
+        [[Session_DM sharedInstance] deleteSessionWithId:ses.sessionId];
 
         [self.arrSessions removeObject:ses];
         [arrSec removeObject:ses];
         
-        [self.tSessions reloadData];
-        
 //        NSLog(@"%p - %p", ses, self.selectedRequestedSession);
     }
+
+    [self.tSessions deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+
+    // [self.tSessions reloadData]; causing crash.
 }
 
 

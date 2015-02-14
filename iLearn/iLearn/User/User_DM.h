@@ -33,6 +33,7 @@ typedef NS_ENUM(NSUInteger, UserType) {
 + (instancetype)sharedInstance;
 
 - (BOOL)isAdminLogin;
+- (NSString*)loggedInUserId;
 
 - (User*)userWithId:(NSString*)userId;
 - (NSArray*)getUsersWithId:(NSString*)userId;

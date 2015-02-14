@@ -175,14 +175,12 @@
     cell.lblName.text = session.name;
     cell.lblType.text = session.type;
     cell.lblDateTime.text = [NSString stringWithFormat:@"%@", session.dateTime];
-    cell.lblBy.text = [NSString stringWithFormat:@"by %@", session.user.fname];
-//    if ([session.status integerValue]== SessionStatusUpcoming) {
-//        cell.btnAddAttendees.indexPath = indexPath;
-//        cell.btnAddAttendees.hidden = NO;
-//    }
-//    else {
-//        cell.btnAddAttendees.hidden = YES;
-//    }
+    if ([session.status integerValue]== SessionStatusRequested) {
+        cell.lblBy.text = [NSString stringWithFormat:@"by %@", session.requestedUser.fname];
+    }
+    else {
+        cell.lblBy.text = [NSString stringWithFormat:@"by %@", session.user.fname];
+    }
     return cell;
 }
 
@@ -306,5 +304,43 @@
     }
 }
 
+#pragma mark - Table Editing
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    Session *ses = (Session*)[[self.arrTableSessions objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    if ([ses.status integerValue] == SessionStatusRequested)
+        return YES;
+    
+    return NO;
+}
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)aTableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [self deleteSessionWithIndexPath:indexPath];
+    }
+}
+
+- (void)deleteSessionWithIndexPath:(NSIndexPath*)indexPath {
+    
+    NSMutableArray *arrSec = [self.arrTableSessions objectAtIndex:indexPath.section];
+    Session *ses = (Session*)[arrSec objectAtIndex:indexPath.row];
+    if ([ses.status integerValue] == SessionStatusRequested) {
+        
+        [[Session_DM sharedInstance] deleteSessionWithId:ses.sessionId];
+        
+        [self.arrSessions removeObject:ses];
+        [arrSec removeObject:ses];
+    }
+    
+    [self.tSessions deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    // [self.tSessions reloadData]; causing crash.
+}
 
 @end
