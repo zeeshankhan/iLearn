@@ -88,8 +88,11 @@
         Session *ses = [dicAttendee objectForKey:kAttendeeSession];
         row.session = [NSSet setWithObject:ses];
         row.userId = [Utility validString:[dicAttendee objectForKey:kAttendeeUserId]];
-        row.name = [Utility validString:[dicAttendee objectForKey:kAttendeeName]];
-        row.attendeeId = [NSString stringWithFormat:@"%@_%@", ses.name, row.name];
+        NSString *n = [Utility validString:[dicAttendee objectForKey:kAttendeeName]];
+        row.name = n;
+        NSString *idx = [NSString stringWithFormat:@"%@_%@", ses.name, row.name];
+        row.attendeeId = idx;
+        [self saveAttendeeImageWithName:n forId:idx];
     }
     else {
         NSLog(@"CoreData Error: Unable to insert row, Attendee row is nil.");
@@ -98,6 +101,17 @@
     [[DBManager sharedInstance] saveContext];
     NSLog(@"Attendee Added into data base.");
     return row;
+}
+
+- (void)saveAttendeeImageWithName:(NSString*)name forId:(NSString*)strId {
+    NSArray *arrN = [name componentsSeparatedByString:@" "];
+    NSString *fn = @"";
+    int x=0;
+    for (NSString* n in arrN) {
+        fn = [NSString stringWithFormat:@"%@%@", fn, (n.length>1)?[n substringToIndex:1]:n];
+        if (++x == 3) break;
+    }
+    [Utility saveThumb:[Utility imageWithText:fn] withName:strId];
 }
 
 - (void)deleteAttendee:(Attendee*)attendee {

@@ -25,5 +25,8 @@
 + (void)saveThumb:(UIImage*)thumb withName:(NSString*)name;
 
 + (void)showAlertWithTitle:(NSString*)title andMessage:(NSString*)msg;
++ (UIColor*)randomColor;
++ (UIImage*)imageWithRandomColor;
++ (UIImage*)imageWithText:(NSString*)text;
 
 @end

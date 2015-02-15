@@ -7,6 +7,7 @@
 //
 
 #import "Utility.h"
+#import <CommonCrypto/CommonDigest.h>
 
 @implementation Utility
 
@@ -70,7 +71,7 @@
     }
 }
 
-+ (UIImage*)imageMFor:(NSString*)name {
++ (UIImage*)imageMFor:(NSString*)name withFN:(NSString*)fn {
     if ([[[self class] validString:name] isEqualToString:@""]) {
         return [UIImage imageNamed:@"placeholder"];
     }
@@ -78,6 +79,10 @@
         NSString *imgname = [NSString stringWithFormat:@"%@_M.png",name];
         return [[self class] imageFor:imgname];
     }
+}
+
++ (UIImage*)imageMFor:(NSString*)name {
+    return [[self class] imageMFor:name withFN:nil];
 }
 
 + (UIImage*)imageOFor:(NSString*)name {
@@ -131,6 +136,44 @@
         }
     }
     return data;
+}
+
++ (UIColor*)randomColor {
+    CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0 % 256
+    CGFloat saturation = ( arc4random() % 256 / 256.0 ); //+ 0.5;  //  0.5 to 1.0, away from white % 128
+    CGFloat brightness = ( arc4random() % 256 / 256.0 ); //+ 0.5;  //  0.5 to 1.0, away from black % 128
+    UIColor *color = [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
+    return color;
+}
+
+
++ (UIImage*)imageWithRandomColor {
+    
+    CGSize size = CGSizeMake(400,400);
+    UIGraphicsBeginImageContextWithOptions(size, YES, 0);
+    [[[self class] randomColor] setFill];
+    UIRectFill(CGRectMake(0, 0, size.width, size.height));
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return image;
+}
+
+
++ (UIImage*)imageWithText:(NSString*)text {
+    text = [text uppercaseString];
+    UIImage *image = [[self class] imageWithRandomColor];
+    CGPoint point = CGPointMake(image.size.width/2.0, image.size.height/2.0);
+    UIFont *font = [UIFont fontWithName:@"Futura" size:200];
+    CGSize size = CGSizeMake(400, 400);
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0,0,size.width,size.height)];
+    CGRect rect = CGRectMake(point.x/2 - 20,point.y/2 - 20,size.width, size.height);
+    [[UIColor whiteColor] set];
+    NSDictionary *dicAtt = @{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName: font};
+    [text drawInRect:CGRectIntegral(rect) withAttributes:dicAtt];
+    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return newImage;
 }
 
 

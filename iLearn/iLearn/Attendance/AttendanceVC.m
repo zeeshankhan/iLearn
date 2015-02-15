@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tUsers;
 @property (weak, nonatomic) IBOutlet UITableView *tAttendees;
 @property (weak, nonatomic) IBOutlet UILabel *lblSessionName;
+@property (weak, nonatomic) IBOutlet UIButton *bAdd;
 @end
 
 @implementation AttendanceVC
@@ -55,6 +56,10 @@
     [[self.vName layer] setBorderWidth:borderWidth];
     [[self.vName layer] setCornerRadius:radius];
     
+    [[self.bAdd layer] setBorderColor:color];
+    [[self.bAdd layer] setBorderWidth:borderWidth];
+    [[self.bAdd layer] setCornerRadius:radius];
+
     [[self.tUsers layer] setBorderColor:color];
     [[self.tUsers layer] setBorderWidth:borderWidth];
     [[self.tUsers layer] setCornerRadius:radius];
@@ -92,7 +97,7 @@
     else {
         Attendee *attendee = (Attendee*)[self.arrAttendees objectAtIndex:indexPath.row];
         cell.lblTitle.text = [NSString stringWithFormat:@"%@", attendee.name];
-        cell.imgThumb.image = [Utility imageMFor:attendee.userId];
+        cell.imgThumb.image = [Utility imageMFor:attendee.attendeeId];
         if (attendee.userId.length > 0)
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         else
@@ -167,19 +172,29 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 //    [textField resignFirstResponder];
 
-    if (textField.text.length > 3) {
+    [self addAction];
+    return YES;
+}
+
+- (IBAction)addAction {
+
+    NSString *name = self.txtName.text;
+    if (name.length > 3) {
         
-        NSDictionary *dicAttendee = @{kAttendeeName: textField.text
+        NSDictionary *dicAttendee = @{kAttendeeName: name
                                       , kAttendeeUserId: @""
                                       , kAttendeeSession: self.session};
         Attendee *attendee = [[Attendance_DM sharedInstance] addAttendee:dicAttendee];
         [self.arrAttendees addObject:attendee];
         [self.tAttendees reloadData];
-        textField.text = @"";
-//        [textField becomeFirstResponder];
+        self.txtName.text = @"";
+        //        [self.txtName becomeFirstResponder];
+    }
+    else {
+        NSString *msg = (name.length <= 0) ? @"Please enter name to add" : @"Name must be 3 character long.";
+        [Utility showAlertWithTitle:msg andMessage:nil];
     }
 
-    return YES;
 }
 
 @end

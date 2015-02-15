@@ -41,7 +41,7 @@
     [super viewDidLoad];
     [self notAMemberAction:self.switchMember];
     
-    [self.txtUserid becomeFirstResponder];
+//    [self.txtUserid becomeFirstResponder];
 //    self.txtUserid.text = @"E20043650";
 //    self.txtPassword.text = @"123456";
 
@@ -50,6 +50,7 @@
 
 //    [[User_DM sharedInstance] populateUsersFromList];
     
+//    [self testCode];
     [self formatView];
 }
 
@@ -135,10 +136,12 @@
         
         if ([strPassword isEqualToString:usr.password]) {
             NSLog(@"User Exist %@ %@", usr.fname, usr.lname);
-            [Utility showAlertWithTitle:@"User already Exist" andMessage:nil];
             [[User_DM sharedInstance] setLoggedInUser:usr];
             [self showLoginDetails];
             [self gotoSessions];
+        }
+        else {
+           [Utility showAlertWithTitle:@"Password is wrong." andMessage:nil]; 
         }
         
     }
@@ -163,7 +166,7 @@
     [self dismissKeyboard];
 
     NSString *fname = [Utility validString:self.txtFirstName.text];
-    NSString *lname = [Utility validString:self.txtPassword.text];
+    NSString *lname = [Utility validString:self.txtLastName.text];
     if ([fname isEqualToString:@""] || [lname isEqualToString:@""]) {
         NSLog(@"Please enter your full name.");
         [Utility showAlertWithTitle:@"Please enter your full name." andMessage:nil];
@@ -185,6 +188,11 @@
         if (self.dicThumb) {
             UIImage *image = [self.dicThumb objectForKey:@"UIImagePickerControllerOriginalImage"];
             [Utility saveThumb:image withName:self.txtUserid.text];
+        }
+        else {
+            NSString *fn = [NSString stringWithFormat:@"%@%@", (fname.length>1)?[fname substringToIndex:1]:fname, (lname.length>1)?[lname substringToIndex:1]:lname];
+            UIImage *image = [Utility imageWithText:fn];
+            [Utility saveThumb:image withName:strUserId];
         }
 
         NSDictionary *dicUser = @{kUserId: strUserId
@@ -217,7 +225,7 @@
 
 
 - (IBAction)addPhotoAction {
-
+    
     [self dismissKeyboard];
 
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
@@ -343,5 +351,35 @@
     [self.navigationController pushViewController:sessvcObj animated:YES];
 }
 
+- (void)testCode {
+
+    CGFloat xI = 0;
+    CGFloat wh = 100;
+    CGFloat yAx = 0;
+    for (int x=0; x<100; x++) {
+        CGFloat xA = xI*wh;
+        
+        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(xA, yAx, wh, wh)];
+        v.backgroundColor = [UIColor whiteColor]; //[Utility randomColor];
+        UIImageView *v1 = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 80, 80)];
+        v1.backgroundColor = [UIColor whiteColor];
+        UIImage *im = [Utility imageWithText:[NSString stringWithFormat:@"%d",x]]; //[Utility imageWithRandomColor];
+        v1.image = im;
+        [v addSubview:v1];
+        
+        [self.view addSubview:v];
+        
+        if (xI > 9) {
+            xI = 0;
+            yAx = yAx + 100;
+        }
+        else
+            xI++;
+    }
+    
+    [self.bPhoto setBackgroundColor:[Utility randomColor]];
+    
+    [self.bPhoto setImage:[Utility imageWithRandomColor] forState:UIControlStateNormal];
+}
 
 @end

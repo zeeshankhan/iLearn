@@ -214,6 +214,12 @@
         UIImage *image = [self.dicThumb objectForKey:@"UIImagePickerControllerOriginalImage"];
         [Utility saveThumb:image withName:usr.userId];
     }
+    else {
+        NSString *fn = [NSString stringWithFormat:@"%@%@", (fname.length>1)?[fname substringToIndex:1]:fname, (lname.length>1)?[lname substringToIndex:1]:lname];
+        UIImage *image = [Utility imageWithText:fn];
+        [Utility saveThumb:image withName:usr.userId];
+    }
+
     
     for (UIView *v in self.navigationController.navigationBar.subviews) {
         if (v.tag == kNavItemTag && [v isKindOfClass:[UIButton class]]) {
