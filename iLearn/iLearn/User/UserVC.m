@@ -238,6 +238,8 @@
     usr = [[User_DM sharedInstance] updateUser:dicUser];
     [[User_DM sharedInstance] setLoggedInUser:usr];
     
+    
+    [Utility showAlertWithTitle:@"User updated successfully." andMessage:nil];
     NSLog(@"User updated into database.");
 }
 

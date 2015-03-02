@@ -97,7 +97,10 @@
     else {
         Attendee *attendee = (Attendee*)[self.arrAttendees objectAtIndex:indexPath.row];
         cell.lblTitle.text = [NSString stringWithFormat:@"%@", attendee.name];
-        cell.imgThumb.image = [Utility imageMFor:attendee.attendeeId];
+        UIImage *img = [Utility imageMFor:attendee.userId];
+        if (img == nil)
+            img = [Utility imageMFor:attendee.attendeeId];
+        cell.imgThumb.image = img;
         if (attendee.userId.length > 0)
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         else

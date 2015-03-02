@@ -41,7 +41,7 @@
     [super viewDidLoad];
     [self notAMemberAction:self.switchMember];
     
-//    [self.txtUserid becomeFirstResponder];
+    [self.txtUserid becomeFirstResponder];
 //    self.txtUserid.text = @"E20043650";
 //    self.txtPassword.text = @"123456";
 
@@ -131,6 +131,7 @@
     User *usr = [[User_DM sharedInstance] userWithId:strUserId];
     if (usr == nil) {
         NSLog(@"User Does not exist.");
+        [Utility showAlertWithTitle:@"User Does not exist." andMessage:nil];
     }
     else {
         

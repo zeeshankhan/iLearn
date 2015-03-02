@@ -125,7 +125,21 @@
                 NSLog(@"CoreData Error: Unable to insert row, User row is nil.");
             }
             
-            [Utility saveThumb:[UIImage imageNamed:row.userId] withName:row.userId];
+            NSString *name = [NSString stringWithFormat:@"%@ %@", row.fname, row.lname];
+            NSArray *arrN = [name componentsSeparatedByString:@" "];
+            NSString *fn = @"";
+            int x=0;
+            for (NSString* n in arrN) {
+                fn = [NSString stringWithFormat:@"%@%@", fn, (n.length>1)?[n substringToIndex:1]:n];
+                if (++x == 3) break;
+            }
+            
+            UIImage *imgUsr = [UIImage imageNamed:row.userId];
+            if (imgUsr == nil)
+                imgUsr = [Utility imageWithText:fn];
+            
+            [Utility saveThumb:imgUsr withName:row.userId];
+
         }
         
     }

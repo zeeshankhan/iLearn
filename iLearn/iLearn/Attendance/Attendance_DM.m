@@ -90,9 +90,13 @@
         row.userId = [Utility validString:[dicAttendee objectForKey:kAttendeeUserId]];
         NSString *n = [Utility validString:[dicAttendee objectForKey:kAttendeeName]];
         row.name = n;
+
         NSString *idx = [NSString stringWithFormat:@"%@_%@", ses.name, row.name];
         row.attendeeId = idx;
-        [self saveAttendeeImageWithName:n forId:idx];
+        
+        if ([row.userId isEqualToString:@""]) {
+            [self saveAttendeeImageWithName:n forId:idx];
+        }
     }
     else {
         NSLog(@"CoreData Error: Unable to insert row, Attendee row is nil.");
@@ -104,14 +108,20 @@
 }
 
 - (void)saveAttendeeImageWithName:(NSString*)name forId:(NSString*)strId {
-    NSArray *arrN = [name componentsSeparatedByString:@" "];
-    NSString *fn = @"";
-    int x=0;
-    for (NSString* n in arrN) {
-        fn = [NSString stringWithFormat:@"%@%@", fn, (n.length>1)?[n substringToIndex:1]:n];
-        if (++x == 3) break;
+
+    UIImage *imgUsr = [UIImage imageNamed:strId];
+    if (imgUsr == nil) {
+        NSArray *arrN = [name componentsSeparatedByString:@" "];
+        NSString *fn = @"";
+        int x=0;
+        for (NSString* n in arrN) {
+            fn = [NSString stringWithFormat:@"%@%@", fn, (n.length>1)?[n substringToIndex:1]:n];
+            if (++x == 3) break;
+        }
+        imgUsr = [Utility imageWithText:fn];
     }
-    [Utility saveThumb:[Utility imageWithText:fn] withName:strId];
+    
+    [Utility saveThumb:imgUsr withName:strId];
 }
 
 - (void)deleteAttendee:(Attendee*)attendee {

@@ -84,8 +84,7 @@
         row.requestedUser = u;
         row.sessionId = [self generateSessionIdForUser:u.userId];
 
-        if ([u.isAdmin boolValue] == YES) row.user = u;
-        else if (![[dicSession objectForKey:kSessionUser] isKindOfClass:[NSNull class]])
+        if (![[dicSession objectForKey:kSessionUser] isKindOfClass:[NSNull class]])
             row.user = [dicSession objectForKey:kSessionUser];
 
         row.name = [Utility validString:[dicSession objectForKey:kSessionName]];
